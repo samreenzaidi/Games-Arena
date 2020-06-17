@@ -1,0 +1,24 @@
+<div class="character-list">
+    <div class="list-container" *ngIf="(games)?.length>0">
+        <div class="list-item" *ngFor="let g of games | paginate: { itemsPerPage: 4, currentPage: p }">
+            <img src="assets/game.png" alt="" />
+            <ul>
+                <li>
+                    <span class="property-area">Title</span><span class="value-area">{{g.title}}</span></li>
+                <li>
+                    <span class="property-area">Plateform</span><span class="value-area">{{g.platform}}</span> </li>
+                <li>
+                    <span class="property-area">Score</span><span class="value-area">{{g.score}}</span></li>
+                <li>
+                    <span class="property-area">Genre</span><span class="value-area">{{g.genre}}</span></li>
+                <li>
+                    <span class="property-area">Editors Choice</span><span class="value-area">{{g.editors_choice}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="(games)?.length==0">
+        <span>No game found !!</span>
+    </div> 
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
